@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Gulp work environment for Frontend using Jade templating language",
   "main": "gulpfile.js",
-  "author": "@malander22",
+  "author": "@iwasmalander",
   "repository": {
     "type": "git",
     "url": "git://github.com/malander/renejade.git"
