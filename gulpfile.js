@@ -21,7 +21,8 @@ gulp.task('jade', function() {
 gulp.task('styles', function () {
     return gulp.src(src + 'styles/style.less')
         // .pipe($.plumber())       
-        .pipe($.less())              
+        .pipe($.less())   
+        .pipe($.autoprefixer('last 15 version', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))                   
         .pipe(gulp.dest('app/.tmp'))         
         .pipe(reload({stream:true}));                          
 });
@@ -35,7 +36,7 @@ gulp.task('scripts', function() {
 
 // Take images, comprime them, and push into dist
 gulp.task('images', function () {
-    return gulp.src('app/img/*')
+    return gulp.src('app/img/**/*')
         .pipe($.newer(dest + 'img'))
         .pipe($.imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
         .pipe(gulp.dest(dest + 'img'))                  
