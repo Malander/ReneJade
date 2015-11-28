@@ -1,5 +1,5 @@
 # ReneJade
-Gulp work environment for Frontend using Jade templating language
+Gulp work environment using Jade ans Sass
 
 <!-- ## Features
 - [Bower](http://bower.io)
@@ -34,7 +34,7 @@ Install default Bower packages (Modernizr, jQuery, Bootstrap)
 
 To install custom Bower packages type:
 		
-		bower install package-name --save
+	bower install package-name --save
     
 ## Use
 To start coding just type 
@@ -43,15 +43,15 @@ To start coding just type
     
 This will wire up all your Bower assets to your markup an run the local webserver.
 
+If the server stops for any reason, use this command to start it again:
+
+    gulp connect
+
 When you are done coding and ready to build up your project run this command:
 
     gulp build
     
 You can now find the production-ready code inside the `dist` folder.
-
-If the server stops for any reason, use this command to start it again:
-
-    gulp connect
     
 To delete the compiled code and clean the project folder run:
 
