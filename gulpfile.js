@@ -17,14 +17,21 @@ gulp.task('jade', function() {
     .pipe(reload({stream: true}));
 });
 
-// LESS compiling, autoprefixing and pushing into a temporary folder to watch it live on local server
+// Styles task: 
 gulp.task('styles', function () {
-    return gulp.src(src + 'styles/style.less')
-        // .pipe($.plumber())       
-        .pipe($.less())   
-        .pipe($.autoprefixer('last 15 version', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))                   
-        .pipe(gulp.dest('app/.tmp'))         
-        .pipe(reload({stream:true}));                          
+  return gulp.src('app/styles/main.scss')
+    .pipe($.sass().on('error', $.sass.logError))
+    .pipe($.autoprefixer(
+        'last 5 version',
+        'safari 5',
+        'ie 8',
+        'ie 9',
+        'opera 12.1',
+        'ios 6',
+        'android 4'
+    ))
+    .pipe(gulp.dest('app/.tmp'));
+    .pipe(reload({stream: true}));
 });
 
 // Concat JS and push into a temporary folder to watch it live on local server
@@ -55,14 +62,14 @@ gulp.task('connect', ['watch'], function(){
             baseDir: "app"
         }
     });
-    gulp.watch(['*.html', '.tmp/style.css', '.tmp/main.js'], {cwd: 'app'}, reload);
+    gulp.watch(['*.html', '.tmp/main.css', '.tmp/main.js'], {cwd: 'app'}, reload);
 })
 
 // Watch for changes
 gulp.task('watch', function() {    
     gulp.watch('app/**/*.jade', ['jade']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);  
-    gulp.watch('app/styles/**/*.less', ['styles']);
+    gulp.watch('app/styles/**/*.scss', ['styles']);
 
 })
 
