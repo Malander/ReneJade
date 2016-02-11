@@ -30,7 +30,7 @@ gulp.task('styles', function () {
         'ios 6',
         'android 4'
     ))
-    .pipe(gulp.dest('app/.tmp'));
+    .pipe(gulp.dest('app/.tmp'))
     .pipe(reload({stream: true}));
 });
 
